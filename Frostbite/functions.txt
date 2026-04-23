@@ -1,0 +1,18 @@
+// Product
+// getAllProducts()
+// searchProducts(query)
+// getProductById(id)
+
+// Cart
+// addToCart(cart, product)
+// removeFromCart(cart, productId)
+// calculateCartTotal(cart)
+
+// User
+// registerUser(users, email, password)
+// loginUser(users, email, password)
+// logoutUser(user)
+
+// Order
+// createOrder(user, cart)
+// getUserOrders(orders, userId)
