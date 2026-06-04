@@ -1,8 +1,3 @@
-"""
-Скрипт для тестирования производительности.
-Эмулирует 500 одновременных запросов к функции расчёта за 10 секунд.
-"""
-
 import time
 import random
 import statistics
@@ -11,9 +6,7 @@ import sys
 import os
 import json
 
-# Текущая папка (performance)
 CURRENT_DIR = os.path.dirname(__file__)
-# Корень проекта (proj)
 PROJECT_ROOT = os.path.abspath(os.path.join(CURRENT_DIR, ".."))
 
 if PROJECT_ROOT not in sys.path:
@@ -23,10 +16,6 @@ from src.pricing import calculate_total
 
 
 def make_request(request_id: int) -> dict:
-    """
-    Эмулирует один запрос к функции расчёта.
-    """
-    # Генерируем случайные параметры для реалистичности
     base_price = random.choice([200, 300, 500, 700, 1000, 1500])
     age = random.choice([10, 17, 18, 25, 30, 64, 65, 70, 80])
     is_weekend = random.choice([True, False])
@@ -56,9 +45,6 @@ def make_request(request_id: int) -> dict:
 
 
 def run_load_test(num_requests: int = 500, duration_seconds: int = 10):
-    """
-    Запускает нагрузочное тестирование.
-    """
     print("=" * 60)
     print("НАГРУЗОЧНОЕ ТЕСТИРОВАНИЕ: Умный калькулятор бронирования")
     print("=" * 60)
@@ -72,34 +58,30 @@ def run_load_test(num_requests: int = 500, duration_seconds: int = 10):
     results = []
 
     with ThreadPoolExecutor(max_workers=50) as executor:
-        futures = [
-            executor.submit(make_request, i)
-            for i in range(num_requests)
-        ]
-
+        futures = [executor.submit(make_request, i) for i in range(num_requests)]
         for future in as_completed(futures):
             results.append(future.result())
 
     end_time = time.time()
     actual_duration = end_time - start_time
 
-    # Анализируем результаты
     successful_results = [r for r in results if r["success"]]
     failed_results = [r for r in results if not r["success"]]
-
     response_times = [r["response_time_ms"] for r in successful_results]
 
-    # Вычисляем метрики
     avg_response_time = statistics.mean(response_times) if response_times else 0
     median_response_time = statistics.median(response_times) if response_times else 0
-    p95_response_time = statistics.quantiles(response_times, n=20)[18] if len(response_times) >= 20 else max(response_times) if response_times else 0
+    p95_response_time = (
+        statistics.quantiles(response_times, n=20)[18]
+        if len(response_times) >= 20
+        else max(response_times) if response_times else 0
+    )
     min_response_time = min(response_times) if response_times else 0
     max_response_time = max(response_times) if response_times else 0
 
     success_rate = (len(successful_results) / num_requests) * 100 if num_requests > 0 else 0
     actual_rps = num_requests / actual_duration if actual_duration > 0 else 0
 
-    # Вывод результатов
     print("РЕЗУЛЬТАТЫ ТЕСТИРОВАНИЯ")
     print("=" * 60)
     print(f"Общее количество запросов:     {num_requests}")
@@ -126,14 +108,12 @@ def run_load_test(num_requests: int = 500, duration_seconds: int = 10):
         for r in failed_results:
             error_msg = r["error"] or "Unknown error"
             error_counts[error_msg] = error_counts.get(error_msg, 0) + 1
-
         for error, count in error_counts.items():
             print(f"  {error}: {count} раз(а)")
         print()
 
     print("=" * 60)
 
-    # Сохраняем метрики в файл для отчёта
     metrics = {
         "total_requests": num_requests,
         "successful_requests": len(successful_results),
@@ -160,8 +140,6 @@ def run_load_test(num_requests: int = 500, duration_seconds: int = 10):
 
 if __name__ == "__main__":
     metrics = run_load_test(num_requests=500, duration_seconds=10)
-
-    # Быстрый вывод ключевых метрик
     print("\n📊 КЛЮЧЕВЫЕ МЕТРИКИ (для отчёта):")
     print(f"  Среднее время отклика:       {metrics['avg_response_time_ms']:.2f} мс")
     print(f"  95-й перцентиль:             {metrics['p95_response_time_ms']:.2f} мс")
