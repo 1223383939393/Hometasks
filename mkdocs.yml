@@ -1,0 +1,21 @@
+site_name: Документация API "SmartDelivery"
+site_description: Техническая документация для разработчиков
+site_author: Команда РПО-2026
+
+theme:
+  name: material
+  font: false
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - content.code.copy
+
+plugins:
+  - search
+  - mermaid2
+
+nav:
+  - Главная: index.md
+  - Быстрый старт: quickstart.md
+  - Архитектура: architecture.md
+  - API Reference: api.md
