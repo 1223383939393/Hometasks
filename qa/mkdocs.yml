@@ -1,0 +1,27 @@
+site_name: SmartDelivery API Documentation
+site_description: Technical documentation for SmartDelivery service
+
+theme:
+  name: material
+  features:
+    - content.code.copy
+    - content.code.annotate
+
+nav:
+  - Главная: index.md
+  - Быстрый старт: quickstart.md
+  - Архитектура: architecture.md
+  - API: api.md
+  - Тестирование: testing.md
+  - Тест Mermaid: test-mermaid.md
+
+markdown_extensions:
+  - admonition
+  - codehilite
+  - tables
+  - fenced_code
+  - pymdownx.superfences
+
+extra_javascript:
+  - https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js
+  - js/mermaid-init.js  

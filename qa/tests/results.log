@@ -1,0 +1,38 @@
+=== SmartDelivery API tests (JSONPlaceholder) ===
+
+=== POST /posts ===
+Status: 201
+Response:
+{
+  "title": "New SmartDelivery order",
+  "body": "Test order for SmartDelivery docs",
+  "userId": 1,
+  "id": 101
+}
+
+=== GET /posts/{id} ===
+Request id: 1
+Status: 200
+Response:
+{
+  "userId": 1,
+  "id": 1,
+  "title": "sunt aut facere repellat provident occaecati excepturi optio reprehenderit",
+  "body": "quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architecto"
+}
+
+=== PUT /posts/{id} ===
+Request id: 1
+Status: 200
+Response:
+{
+  "id": 1,
+  "title": "Updated SmartDelivery order",
+  "body": "Updated order data",
+  "userId": 1
+}
+
+=== DELETE /posts/{id} ===
+Request id: 1
+Status: 200
+Response: {}
