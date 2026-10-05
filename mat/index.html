@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Менеджер учебных задач</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Менеджер задач</h1>
+
+        <!-- Блок статистики -->
+        <div class="stats">
+            <div class="stat-box">Всего: <span id="total-tasks">0</span></div>
+            <div class="stat-box">В процессе: <span id="active-tasks">0</span></div>
+            <div class="stat-box">Выполнено: <span id="completed-tasks">0</span></div>
+        </div>
+
+        <!-- Форма добавления/редактирования -->
+        <form id="task-form">
+            <input type="hidden" id="task-id">
+            <input type="text" id="task-title" placeholder="Название задачи" required>
+            <textarea id="task-desc" placeholder="Описание (необязательно)"></textarea>
+            
+            <div class="form-row">
+                <select id="task-priority">
+                    <option value="low">Низкий приоритет</option>
+                    <option value="medium" selected>Средний приоритет</option>
+                    <option value="high">Высокий приоритет</option>
+                </select>
+                <input type="date" id="task-date" required>
+            </div>
+            
+            <button type="submit" id="submit-btn">Добавить задачу</button>
+        </form>
+
+        <!-- Фильтры и сортировка -->
+        <div class="controls">
+            <div class="filters">
+                <button class="filter-btn active" data-filter="all">Все</button>
+                <button class="filter-btn" data-filter="active">Активные</button>
+                <button class="filter-btn" data-filter="completed">Выполненные</button>
+                <button class="filter-btn" data-filter="high">Высокий приоритет</button>
+            </div>
+            <div class="sort">
+                <select id="sort-select">
+                    <option value="default">Сортировка: по добавлению</option>
+                    <option value="date">Сортировка: по дате дедлайна</option>
+                    <option value="priority">Сортировка: по приоритету</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Список задач -->
+        <div id="task-list"></div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html><!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Менеджер учебных задач</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Менеджер задач</h1>
+
+        <!-- Блок статистики -->
+        <div class="stats">
+            <div class="stat-box">Всего: <span id="total-tasks">0</span></div>
+            <div class="stat-box">В процессе: <span id="active-tasks">0</span></div>
+            <div class="stat-box">Выполнено: <span id="completed-tasks">0</span></div>
+        </div>
+
+        <!-- Форма добавления/редактирования -->
+        <form id="task-form">
+            <input type="hidden" id="task-id">
+            <input type="text" id="task-title" placeholder="Название задачи" required>
+            <textarea id="task-desc" placeholder="Описание (необязательно)"></textarea>
+            
+            <div class="form-row">
+                <select id="task-priority">
+                    <option value="low">Низкий приоритет</option>
+                    <option value="medium" selected>Средний приоритет</option>
+                    <option value="high">Высокий приоритет</option>
+                </select>
+                <input type="date" id="task-date" required>
+            </div>
+            
+            <button type="submit" id="submit-btn">Добавить задачу</button>
+        </form>
+
+        <!-- Фильтры и сортировка -->
+        <div class="controls">
+            <div class="filters">
+                <button class="filter-btn active" data-filter="all">Все</button>
+                <button class="filter-btn" data-filter="active">Активные</button>
+                <button class="filter-btn" data-filter="completed">Выполненные</button>
+                <button class="filter-btn" data-filter="high">Высокий приоритет</button>
+            </div>
+            <div class="sort">
+                <select id="sort-select">
+                    <option value="default">Сортировка: по добавлению</option>
+                    <option value="date">Сортировка: по дате дедлайна</option>
+                    <option value="priority">Сортировка: по приоритету</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Список задач -->
+        <div id="task-list"></div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
