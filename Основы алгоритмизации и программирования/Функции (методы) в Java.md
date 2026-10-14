@@ -29,6 +29,58 @@
    ![[Pasted image 20261008135508.png]]
    
    Задача 1. Квадрат числа. Напиши метод square(int x), который возвращает квадрат числа. Вызови его для чисел 3, 5, 10. 
+   ```java
+	import java.util.Scanner;
+	
+	public class Main {
+	    public static void main(String[] args) {
+	        Scanner in = new Scanner(System.in);
+	        System.out.println(square(3));
+	        System.out.println(square(5));
+	        System.out.println(square(10));
+	    }
+	    static int square(int x) {
+	        return x * x;
+	    }
+	}
+```
    Задача 2. Максимум из двух. Напиши метод max(int a, int b), возвращающий большее из двух чисел. Затем перегрузи его: max(int a, int b, int c) — максимум из трёх. И проверь на: max(5, 10) max(5, 10, 3) max(7, 2, 9) 
+   ```
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        System.out.println(max(5, 10));
+        System.out.println(max(5, 10, 3));
+        System.out.println(max(7, 2, 9));
+    }
+    static int max(int x, int y) {
+        if (x > y) {
+            return x;
+        }
+        else if(y > x) {
+            return y;
+        }
+        else {
+            return 0;
+        }
+    }
+    static int max(int x, int y, int z) {
+        if (x > y && x > z) {
+            return x;
+        }
+        else if(y > x && y > z) {
+            return y;
+        }
+        else if (z > x && z > y) {
+            return z;
+        }
+        else {
+            return 0;
+        }
+    }
+}
+```
    Задача 3: Напишите метод sum(int[] arr), возвращающий сумму элементов массива. Пустой массив — вернуть 0. 
    Задача 4: Переворот строки. Напиши метод reverse(String s), возвращающий строку в обратном порядке.
