@@ -29,7 +29,7 @@
    ![[Pasted image 20261008135508.png]]
    
    Задача 1. Квадрат числа. Напиши метод square(int x), который возвращает квадрат числа. Вызови его для чисел 3, 5, 10. 
-   ```java
+```java
 	import java.util.Scanner;
 	
 	public class Main {
@@ -44,8 +44,8 @@
 	    }
 	}
 ```
-   Задача 2. Максимум из двух. Напиши метод max(int a, int b), возвращающий большее из двух чисел. Затем перегрузи его: max(int a, int b, int c) — максимум из трёх. И проверь на: max(5, 10) max(5, 10, 3) max(7, 2, 9) 
-   ```
+Задача 2. Максимум из двух. Напиши метод max(int a, int b), возвращающий большее из двух чисел. Затем перегрузи его: max(int a, int b, int c) — максимум из трёх. И проверь на: max(5, 10) max(5, 10, 3) max(7, 2, 9) 
+```java
 import java.util.Scanner;
 
 public class Main {
@@ -82,5 +82,49 @@ public class Main {
     }
 }
 ```
+``
+
    Задача 3: Напишите метод sum(int[] arr), возвращающий сумму элементов массива. Пустой массив — вернуть 0. 
+```java
+import java.util.Scanner;
+public class Main {
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        int[] arr = {6, 2, 4, 9};
+        System.out.println(sum(arr));
+    }
+
+    static int sum(int[] arr) {
+        int su = 0;
+        for (int i = 0; i < arr.length; i++) {
+            su += arr[i];
+        }
+        if(arr.length == 0) {
+            return 0;
+        }
+        else {
+            return su;
+        }
+    }
+}
+```
    Задача 4: Переворот строки. Напиши метод reverse(String s), возвращающий строку в обратном порядке.
+import java.util.Scanner;
+
+  
+
+```java
+public class Main {
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        String s = "Hello";
+        reverse(s);
+    }
+    static String reverse(String s) {
+        char[] chars = s.toCharArray();
+        for (int i = chars.length - 1; i > -1; i--) {
+            System.out.print(chars[i]);
+        }
+    }
+}
+```
